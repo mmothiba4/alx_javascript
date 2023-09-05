@@ -1,7 +1,7 @@
 #!/usr/bin/node
 //Update the script to replace the value 12 with 89
 
-const myObject = {
+let myObject = {
     type: 'object'
     value: 12
 };

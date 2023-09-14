@@ -3,14 +3,12 @@ const request = require('request');
 const url = process.argv[2];
 //Request URL
 
-request(url, (error, response, body) => {
+request(process.argv[2], function (error, response) {
     //Printing the error if occurred
     if (error) {
         console.error(error);
     }
     //Printing status code
-    console.log('code: ${response.statusCode}');
-    //Printing body
-    console.log(body);
+    console.log('code:', response && response.statusCode);
 });
 

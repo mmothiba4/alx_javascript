@@ -1,7 +1,8 @@
 #!/usr/bin/node
 const request = require('request');
+const url = process.argv[2];
 //Request URL
-let url = 'https://intranet.alxswe.com/status code';
+
 request(url, (error, response, body) => {
     //Printing the error if occurred
     if (error) {

@@ -1,32 +1,22 @@
 #!/usr/bin/node
 function divideBy(firstNumber){
     return function(secondNumber){
-        console.log(parseInt(secondNumber)/parseInt(firstNumber));
+        return secondNumber/firstNumber;
     }
 }
 
 function addBy(firstNumber) {
     return function(secondNumber){
-        return(firstNumber + secondNumber)
+        return firstNumber + secondNumber;
     }
-
-    const addBy100 = (function() {
-        let counter = 0
-        return function () {counter += 100; return counter}
-    })();
 }
 
-const addBy1000 = ( function () {
-    let counter = 1000
-    return function () {counter+=1000; return counter}
-})();
+let addBy100 = addBy(100);
+let addBy1000 = addBy(1000);
+let divideBy10 = divideBy(10)
+let divideBy100 = divideBy(100)
 
-const divideBy10 = ( function () {
-    let counter = 10
-    return function () {counter+=10; return counter}
-})();
-
-const divideBy1000 = ( function () {
-    let counter = 1000
-    return function () {counter+=1000; return counter}
-})();
+console.log(addBy100(20));
+console.log(addBy1000(20));
+console.log(divideBy10(20));
+console.log(divideBy100(200));

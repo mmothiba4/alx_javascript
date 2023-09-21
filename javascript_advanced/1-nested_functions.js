@@ -1,19 +1,17 @@
 #!/usr/bin/node
-const globalVariable = "Welcome"
+let globalVariable = "Welcome";
 function outer() {
-    alert(globalVariable());
-
-const course = "Holberton"
-function inner() {
-    alert('globalVariable' + course)
+    alert(globalVariable);
+    let course = "Holberton";
+    function inner() {
+    alert(globalVariable + course);
+    let exclamation = "!";
+    function inception() {
+    alert(globalVariable + course + exclamation);
 }
-
-const exclamation = !
-function inception() {
-    alert(globalVariable, + course + exclamation);
-    console.log(globalVariable);
+    inception();
 }
-console.log(course);
+inner();
 
 }
-console.log(outer);
+outer();

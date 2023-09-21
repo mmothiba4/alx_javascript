@@ -1,12 +1,15 @@
 #!/usr/bin/node
-#!/usr/bin/node
+
 
 function welcome(firstName, lastName) {
-    const fullName = ("firstName", " ", + lastName);
+    let fullName = firstName + " " + lastName
+    console.log(fullName);
 
     function displayFullName() {
-        alert("Welcome", " " + fullName + "!");
+        alert(`Welcome + ${fullName}!`)
     }
-};
-console.log(displayFullName);
-displayFullName();
+
+    displayFullName();
+}
+welcome('Holberton', 'School');
+alert(fullName)

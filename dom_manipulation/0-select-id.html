@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Introduction</title>
+</head>
+<body>
+    <p id="myParagraph">This is my paragragh</p>
+</body>
+<script>
+    //select the element using its id and store its variable
+    const paragraphElement = document.getElementById("myParagraph");
+    //use DOM API to modify the content of the p element
+    paragraphElement.textContent = "I successfully updated this paragraph with JavaScript";
+</script>
+
+</html>

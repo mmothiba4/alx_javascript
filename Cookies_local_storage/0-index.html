@@ -3,14 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cookies and Local Storage</title>
 </head>
 <body>
-    <form action="/url" method="GET">
-        <p></p>
-        <input type="text" name="firstname">
-        <input type="text" name="lastname"
-        <button type="Log me in"></button>
-    </form>
+    <h1>Login to the website</h1>
+    <input type="text" name="firstname" placeholer="First Name">
+    <input type="text" name="email" placeholder="email">
+    <button onclick="setCookies()">Log me in</button>
+    <h1>Cookies</h1>
+    <button onclick="showCookies()">Show the cookies</button>
+    <script>
+        //A function that adds cookies' firstname and email
+        function setCookies() {
+            let firstnameValue = document.getElementById("firstname").value;
+            let emailValue = document.getElementById("email").value;
+
+            document.cookie = `firstname=${firstnameValue}`;
+            document.cookie= `email=${emailValue}`;
+        }
+        function showCookies() {
+            let cookies = document.cookie;
+            //create paragraph element.
+            const paragraph = document.createElement("p");
+            //set the inner HTML of the paragraph.
+            paragraph.innerHTML = `Cookies: ${cookies}`;
+            //Append the paragraph element to the body of the documentdocument.body.appendChild(paragraph);
+        }
+    </script>
 </body>
 </html>

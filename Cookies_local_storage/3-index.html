@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies and Local Storage</title>
+</head>
+<body>
+    <h1>Login to the website</h1>
+    <input type="text" name="firstname" placeholer="First Name">
+    <input type="text" name="email" placeholder="Email">
+    <button onclick="setCookies()">Log me in</button>
+    <h1>Cookies</h1>
+    <button onclick="showCookies()">Show the cookies</button>
+    <script>
+        //A function that adds cookies' firstname and email
+        //Acookie with expiration date of 10 days
+        function setCookies() {
+            let firstnameValue = document.getElementById("firstname").value;
+            let emailValue = document.getElementById("email").value;
+            //Calculate expiration date for 10 days from now
+            let expirationDate = new Date();
+            expirationDate.setDate(expirationDate.grtDate() + 10);
+
+            //Set cookie with expiration date
+            document.cookie = `firstname=${firstnameValue} expires=${expirationDate.toUTCString()}`;
+            document.cookie= `email=${emailValue} expires+ ${expirationDate.toUTCString()}`;
+        }
+        function showCookies() {
+            let cookies = document.cookie;
+            //create paragraph element.
+            const paragraph = document.createElement("p");
+            //set the inner HTML of the paragraph.
+            paragraph.innerHTML = `Cookies: ${cookies}`;
+            //Append the paragraph element to the body of the document
+            document.body.appendChild(paragraph);
+        }
+    </script>
+</body>
+</html>

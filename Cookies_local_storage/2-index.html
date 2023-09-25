@@ -26,12 +26,26 @@
             document.cookie = `firstname=${firstnameValue} expires=${expirationDate.toUTCString()}`;
             document.cookie= `email=${emailValue} expires+ ${expirationDate.toUTCString()}`;
         }
+
+        function getCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.starsWith(name + '=')) {
+                    return cookie.substring(name.length + 1);
+                }
+            }
+            return '';
+        }
+        
+
         function showCookies() {
-            let cookies = document.cookie;
+            let email = getCookie("email");
+            let firstname = getCookie("firstname")
             //create paragraph element.
             const paragraph = document.createElement("p");
             //set the inner HTML of the paragraph.
-            paragraph.innerHTML = `Cookies: ${cookies}`;
+            paragraph.innerHTML = `Email: ${email} - Firstname: {firstname}`;
             //Append the paragraph element to the body of the document
             document.body.appendChild(paragraph);
         }

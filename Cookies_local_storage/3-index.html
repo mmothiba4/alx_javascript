@@ -6,35 +6,84 @@
     <title>Cookies and Local Storage</title>
 </head>
 <body>
-    <h1>Login to the website</h1>
+    <div id=""loginForm>
     <input type="text" name="firstname" placeholer="First Name">
     <input type="text" name="email" placeholder="Email">
     <button onclick="setCookies()">Log me in</button>
+    </div>
     <h1>Cookies</h1>
     <button onclick="showCookies()">Show the cookies</button>
     <script>
-        //A function that adds cookies' firstname and email
-        //Acookie with expiration date of 10 days
+        //Task 3: Delete cookie
+        function showForm() {
+            const welcomeMessage = document.getElementById("welcomeMessage");
+            const loginForm = document.getElementById("loginForm");
+
+            if (welcomeMessage) {
+                welcomeMessage.style.display = "none";
+            }
+            loginForm.stle.display = "block";
+        }
+
+        function hideForm() {
+            const loginForm = document.getElementById("loginForm");
+            loginForm.style.display = "none";
+        }
+
+        function deleteCookiesAndShowForm() {
+            document.cookie = "firstname=; expires = Thur, 01 Jan 1970 00:00:00 UTC;";
+            document.cookie = "email=; expires = Thur, 01 Jan 1970 00:00:00 UTC;";
+            showForm();
+        }
+
+        function showWelcomeMessageOrForm() {
+            const cookies = document.cookie;
+            const firstName = getCookie("firstname");
+            if (firstName) {
+                const body = document.body;
+                body.innerHTML = '<h1 id="welcomeMessage">Welcome ${firstName} <a href="#" onclick='
+            } else {
+                showForm();
+            }
+        }
         function setCookies() {
-            let firstnameValue = document.getElementById("firstname").value;
-            let emailValue = document.getElementById("email").value;
+            let firstname = document.getElementById("firstname").value;
+            let email = document.getElementById("email").value;
             //Calculate expiration date for 10 days from now
             let expirationDate = new Date();
-            expirationDate.setDate(expirationDate.grtDate() + 10);
+            expirationDate.setDate(expirationDate.getDate() + 10);
 
             //Set cookie with expiration date
-            document.cookie = `firstname=${firstnameValue} expires=${expirationDate.toUTCString()}`;
-            document.cookie= `email=${emailValue} expires+ ${expirationDate.toUTCString()}`;
+            document.cookie = `firstname=${firstName} expires=${expirationDate.toUTCString()}`;
+            document.cookie= `email=${email} expires+ ${expirationDate.toUTCString()}`;
+            showWelcomeMessageOrForm();
         }
+
+        function getCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.starsWith(name + '=')) {
+                    return cookie.substring(name.length + 1);
+                }
+            }
+            return '';
+        }
+        
+
         function showCookies() {
-            let cookies = document.cookie;
+            let email = getCookie("email");
+            let firstname = getCookie("firstname")
             //create paragraph element.
             const paragraph = document.createElement("p");
             //set the inner HTML of the paragraph.
-            paragraph.innerHTML = `Cookies: ${cookies}`;
+            paragraph.innerHTML = `Email: ${email} - Firstname: {firstname}`;
             //Append the paragraph element to the body of the document
             document.body.appendChild(paragraph);
+            alert(document.cookie);
         }
+
+        showWelcomeMessageOrForm();
     </script>
 </body>
 </html>

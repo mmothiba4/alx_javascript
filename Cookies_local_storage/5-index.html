@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Local Storage and cookies</title>
+    <title>Local Storage</title>
 </head>
 <body>
     <script>
@@ -24,7 +24,7 @@
                 let li = document.createElement('li')
                 li.textContent = item;
                 li.addEventListener('click', function() {
-
+                    addItemToCart(item);
                 });
                 ul.appendChild(li);
             });
@@ -32,13 +32,14 @@
         }
         function displayCart() {
             const numberOfItemsInCart = object.keys(localStorage).length;
-            if (nu === 0) {
+            if (numberOfItemsInCart === 0) {
                 return;
             }
-            const p =document.createElement(p);
+
+            const p = document.createElement('p');
             p.textContent = 'You previously had ${numberOfItemsInCart} items in your cart';
             document.body.appendChild(p);
-        
+            
         }
 
         if (window.localStorage) {

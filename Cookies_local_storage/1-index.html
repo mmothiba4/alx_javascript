@@ -18,6 +18,14 @@
             let firstnameValue = document.getElementById("firstname").value;
             let emailValue = document.getElementById("email").value;
 
+            //Calculate expiration date for 10 days from now
+            let expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 10);
+
+            //Set cookie with expiration date
+            document.cookie = `firstname=${firstnameValue} expires=${expirationDate.toUTCString()}`;
+            document.cookie= `email=${emailValue} expires+ ${expirationDate.toUTCString()}`;
+
             document.cookie = `firstname=${firstnameValue}`;
             document.cookie= `email=${emailValue}`;
         }

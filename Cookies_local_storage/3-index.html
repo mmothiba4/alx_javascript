@@ -17,15 +17,13 @@
 
     <script>
         function getCookie(name) {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                if (cookie.starsWith(name + '=')) {
-                    return cookie.substring(name.length + 1);
-                }
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) {
+                return parts.pop(split)(';').shift();
             }
-            return '';
         }
+
         
 
         function showCookies() {
@@ -67,21 +65,19 @@
             const firstName = getCookie("firstname");
             if (firstName) {
                 const body = document.body;
-                body.innerHTML = '<h1 id="welcomeMessage">Welcome ${firstName} <a href="#" onclick='
+                body.innerHTML = `<h1 id="welcomeMessage">Welcome ${firstName} <a href="#" onclick="deleteCookiesAndShowForm()">(logout)</a></h1>`;
             } else {
                 showForm();
             }
         }
         function setCookies() {
-            let firstname = document.getElementById("firstname").value;
-            let email = document.getElementById("email").value;
+            const firstname = document.getElementById("firstname").value;
+            const email = document.getElementById("email").value;
             //Calculate expiration date for 10 days from now
             let expirationDate = new Date();
             expirationDate.setDate(expirationDate.getDate() + 10);
-
-            //Set cookie with expiration date
-            document.cookie = `firstname=${firstName} expires=${expirationDate.toUTCString()}`;
-            document.cookie= `email=${email} expires+ ${expirationDate.toUTCString()}`;
+            document.cookie = `firstname=${firstName}`;
+            document.cookie= `email=${email}`;
             showWelcomeMessageOrForm();
         }
 

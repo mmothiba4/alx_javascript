@@ -12,16 +12,18 @@
 </head>
 <body>
     <img id="myImage" src="https://picsum.photos/200/300" alt="my Image">
+
     
+    <script>
+        //select image using its id and store the variable
+        const myImageElement = document.getElementById("myImage");
+        //modify the src attribute
+        myImageElement.src = "https://picsum.photos/200/301";
+        //modify the alt attribute
+        myImageElement.alt = "New image";
+        //Modify the border
+        myImageElement.style.border = "2px solid red";
+    </script>
 </body>
-<script>
-    //select image using its id and store the variable
-    const myImageElement = document.getElementById("myImage");
-    //modify the src attribute
-    myImageElement.src = "https://picsum.photos/200/301";
-    //modify the alt attribute
-    myImageElement.alt = "New image";
-    //Modify the border
-    myImageElement.style.border = "2px solid red";
-</script>
+
 </html>

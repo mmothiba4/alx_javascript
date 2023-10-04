@@ -1,25 +1,30 @@
-function handleFormSubmit() {
-    // Prevent the default form submission behavior
-    document.getElementById("submitForm").addEventListener("submit", function(event) {
-        event.preventDefault();
+#!/usr/bin/Node
+// Function to handle form submission and perform validation
+function handleFormSubmit(event) {
+    event.preventDefault(); // Prevent default form submission
 
-        // Get the values of the name and email fields
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
+    const nameField = document.getElementById("name");
+    const emailField = document.getElementById("email");
+    const errorElement = document.getElementById("error");
+    const successElement = document.getElementById("success");
 
-        // Get the error element
-        const errorElement = document.getElementById("error");
+    // Retrieve values from form fields
+    const name = nameField.value.trim();
+    const email = emailField.value.trim();
 
-        // Check if name or email is empty or null
-        if (name === "" || name === null || email === "" || email === null) {
-            // Display an error message
-            errorElement.textContent = "Please fill in all the fields.";
-        } else {
-            // Clear any previous error message
-            errorElement.textContent = "";
-        }
-    });
+    // Reset error and success messages
+    errorElement.textContent = "";
+    successElement.textContent = "";
+
+    // Validate form fields
+    if (name === "" || email === "") {
+        errorElement.textContent = "Please fill in all required fields.";
+    } else {
+        // Form submission successful
+        successElement.textContent = "Form submitted successfully!";
+        
+    }
 }
 
-// Call the function to set up the event listener
-handleFormSubmit();
+// Add an event listener to the form to handle form submission
+document.getElementById("submitForm").addEventListener("submit", handleFormSubmit);

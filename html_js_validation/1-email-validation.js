@@ -1,17 +1,22 @@
 #!/usr/bin/node
+// Function to validate the email
 function validateEmail() {
     const email = document.getElementById("email").value;
-    const errorElement = document.getElementById("error");
+    const errorElement = document.getElementById("error");    
+    const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
 
-    // Regular expression for a simple email validation
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-    if (!emailPattern.test(email)) {
-        // Email is not in a valid format, display an error message
+    // Check if the email matches the regex pattern
+    if (!emailRegex.test(email)) {
         errorElement.textContent = "Please enter a valid email address.";
-        return false; // Prevent form submission
-    } else {
-        // Email is valid, clear any previous error message
-        errorElement.textContent = "";
+        return false;
     }
+    // Clear any previous error messages and allow form submission
+    errorElement.textContent = "";
+    return true;
 }
+// Add an event listener to the form to call validateEmail on submit
+document.getElementById("emailForm").addEventListener("submit", function (event) {
+    if (!validateEmail()) {
+        event.preventDefault(); // Prevent form submission if validation fails
+    }
+});
